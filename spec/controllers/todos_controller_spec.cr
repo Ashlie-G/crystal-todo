@@ -33,9 +33,11 @@ describe TodosController do
       end
     end
   
-    # it "shows a single todo" do
-      
-    # end
+    it "shows a single todo" do
+      result = curl("GET", "/todos/#{todo_test.id}")
+      result.status_code.should eq(200)
+      JSON.parse(result.body).as_h["id"].should eq(todo_test.id)
+    end
   
 
     # it "creates a todo and adds to the database" do
@@ -46,12 +48,15 @@ describe TodosController do
       
     # end
   
-    # it "deletes a todo from the database" do
-      
-    # end
+    it "deletes a todo from the database" do
+      result = curl("DELETE", "/todos/#{todo_test.id}")
+      result.status_code.should eq(200)
+      JSON.parse(result.body).as_h["id"].should eq(todo_test.id)
+    end
 
-    # it "deletes all todos from the database" do
-      
-    # end
+    it "deletes all todos from the database" do
+      result = curl("DELETE", "/todos")
+      result.status_code.should eq(200)
+    end
 
 end
