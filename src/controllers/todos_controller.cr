@@ -5,7 +5,7 @@ require "json"
 
 
 class TodosController < Application
-# before_action :set_todo, only [:show]
+# before_action :set_todo, only [:show, :update, :delete]
 
     base "/todos"
 
@@ -25,11 +25,15 @@ class TodosController < Application
     todo = Todo.new(JSON.parse(request.body.as(IO)))
     begin
       todo.save!
+      if !todo.url.nil?
+        puts "Url empty"
+      else
       todo.url = "http://#{request.headers["host"]}/todos/#{todo.id}"
       render text: todo.to_json
+      end
 
     rescue exception
-      puts exception
+      puts "There was an error: #{exception}"
     end
     
   end
@@ -58,7 +62,7 @@ class TodosController < Application
        todo.save!
        render text: todo.to_json
      rescue exception
-       puts exception
+       puts "There was an error: #{exception}"
      end
 
   end
@@ -79,7 +83,7 @@ class TodosController < Application
     Todo.query.select.each {|todo| todo.delete}
   end
 
-
+  #set up CORS
   options "/" do 
     response.headers["Access-Control-Allow-Methods"] = "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS"
   end
