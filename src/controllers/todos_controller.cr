@@ -25,7 +25,9 @@ class TodosController < Application
     todo = Todo.new(JSON.parse(request.body.as(IO)))
     begin
       todo.save!
+      todo.url = "http://#{request.headers["host"]}/todos/#{todo.id}"
       render text: todo.to_json
+
     rescue exception
       puts exception
     end
@@ -43,13 +45,17 @@ class TodosController < Application
 
     update_params = JSON.parse(request.body.as(IO)).as_h
 
+    # todo.title = update_params["title"].to_s if update_params.has_key?("title")
+    # todo.order = update_params["order"].as_i if update_params.has_key?("order")
+
     update_params.each do |key, value|
       todo.title = value.to_s if key == "title"
       todo.completed = value.as_bool if key == "completed"
       todo.order = value.as_i if key == "order"
     end
+
      begin
-       todo.save
+       todo.save!
        render text: todo.to_json
      rescue exception
        puts exception
