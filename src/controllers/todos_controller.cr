@@ -28,7 +28,8 @@ class TodosController < Application
       if !todo.url.nil?
         puts "Url empty"
       else
-      todo.url = "http://#{request.headers["host"]}/todos/#{todo.id}"
+      # todo.url = "http://#{request.headers["host"]}/todos/#{todo.id}"
+      todo.url = "http://localhost:3000/todos/#{todo.id}"
       render text: todo.to_json
       end
 
