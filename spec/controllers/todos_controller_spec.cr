@@ -1,40 +1,57 @@
 require "../spec_helper"
+require "spec"
 
 describe TodosController do
-  describe "index, get all todos" do
-    
-    it "should return status ok" do
-        response = subject.get "/todos"
-        response.status_code.should eq(200)
-    end
-        
-    it "should show all todos" do
-      
-    end
-  end
 
-  describe "show, get single todo" do
-    it "shows a single todo" do
-      
-    end
-  end
+  #example from welcome.cr
+  #   with_server do
+  #   it "should welcome you" do
+  #     result = curl("GET", "/")
+  #     result.body.includes?("You're being trampled by Spider-Gazelle!").should eq(true)
+  #     result.headers["Date"]?.nil?.should eq(false)
+  #   end
+  # end
 
-  describe "create, creates a new todo" do
-    it "creates a todo and adds to the database" do
-      
-    end
-  end
+    #create todo
+    todo_test = Todo.new
 
-  describe "update, updates a todo" do
-    it "updates a todo" do
-      
+    Spec.before_each do 
+      todo_test.title = "Learn Crystal"
+      todo_completed = false
+      todo_test.save!
     end
-  end
 
-  describe "delete, deletes a todo" do
-    it "deletes a todo from the database" do
-      
+    Spec.after_each do
+      todo_test.delete
     end
-  end
+
+    with_server do
+      it "should show all todos" do
+        result = curl("GET", "/todos")
+        result.status_code.should eq(200)
+        JSON.parse(result.body).as_a.size.should eq(1)
+      end
+    end
+  
+    # it "shows a single todo" do
+      
+    # end
+  
+
+    # it "creates a todo and adds to the database" do
+      
+    # end
+ 
+    # it "updates a todo" do
+      
+    # end
+  
+    # it "deletes a todo from the database" do
+      
+    # end
+
+    # it "deletes all todos from the database" do
+      
+    # end
 
 end
