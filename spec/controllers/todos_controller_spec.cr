@@ -49,10 +49,10 @@ describe TodosController do
     end
  
     it "updates a todo" do
-      updated_todo = {title: "Updated todo", completed: true, order: 1}
-      result = curl("PUT", "/todos/#{todo_test.id}", body: updated_todo.to_json)
+      todo_test.title = "Update todo"
+      result = curl("PATCH", "/todos/#{todo_test.id}", body: todo_test.to_json)
       result.status_code.should eq (200)
-      JSON.parse(result.body).as_h["title"].should eq("updated todo")
+      JSON.parse(result.body).as_h["title"].should eq("Update todo")
       
     end
   
