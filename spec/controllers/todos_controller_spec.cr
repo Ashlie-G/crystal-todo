@@ -62,4 +62,9 @@ describe TodosController do
       result.status_code.should eq(200)
     end
 
+    it "checks CORS" do
+      result = curl("GET", "/todos")
+      result.headers["Access-Control-Origin"].should eq(true)
+    end
+
 end
