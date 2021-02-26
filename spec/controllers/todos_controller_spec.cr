@@ -42,15 +42,19 @@ describe TodosController do
   
 
     it "creates a todo and adds to the database" do
-      todo_test_2 = Todo.new({title: "Write tests", completed: false, order: 1})
+      todo_test_2 = Todo.new({title: "Write tests", completed: false, order: 2})
       result = curl("POST", "/todos", body: todo_test_2.to_json)
       result.status_code.should eq(200)
       JSON.parse(result.body).as_h["title"].should eq(todo_test_2.title)  
     end
  
-    # it "updates a todo" do
+    it "updates a todo" do
+      updated_todo = {title: "Updated todo", completed: true, order: 1}
+      result = curl("PUT", "/todos/#{todo_test.id}", body: updated_todo.to_json)
+      result.status_code.should eq (200)
+      JSON.parse(result.body).as_h["title"].should eq("updated todo")
       
-    # end
+    end
   
     it "deletes a todo from the database" do
       result = curl("DELETE", "/todos/#{todo_test.id}")
