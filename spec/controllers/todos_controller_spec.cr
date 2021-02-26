@@ -17,7 +17,8 @@ describe TodosController do
 
     Spec.before_each do 
       todo_test.title = "Learn Crystal"
-      todo_completed = false
+      todo_test.completed = true
+      todo_test.order = 1
       todo_test.save!
     end
 
@@ -40,12 +41,12 @@ describe TodosController do
     end
   
 
-    # it "creates a todo and adds to the database" do
-    #   todo_test_2 = {title: "Write tests", completed: false}
-    #   result = curl("POST", "/todos", body: todo_test_2.to_json)
-    #   result.status_code.should eq(200)
-    #   JSON.parse(result.body).as_h["title"].should eq(todo_test_2.title)  
-    # end
+    it "creates a todo and adds to the database" do
+      todo_test_2 = Todo.new({title: "Write tests", completed: false, order: 1})
+      result = curl("POST", "/todos", body: todo_test_2.to_json)
+      result.status_code.should eq(200)
+      JSON.parse(result.body).as_h["title"].should eq(todo_test_2.title)  
+    end
  
     # it "updates a todo" do
       
