@@ -7,7 +7,7 @@ abstract class Application < ActionController::Base
 
   before_action :set_request_id
   before_action :set_date_header
-  #set before action for cors
+  # set before action for cors
   before_action :set_cors
 
   # This makes it simple to match client requests with server side logs.

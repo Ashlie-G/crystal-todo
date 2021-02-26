@@ -16,13 +16,13 @@ require "action-controller/server"
 
 # initialize a pool of database connection:
 Clear::SQL.init("postgres://postgres@localhost:5432/crystal_todo")
-# PG.connect_listen("postgres://localhost:5432/", "a", "b") do |n| 
-#   puts "    got: #{n.payload} on #{n.channel}"                   
+# PG.connect_listen("postgres://localhost:5432/", "a", "b") do |n|
+#   puts "    got: #{n.payload} on #{n.channel}"
 # end
-# Clear::SQL.init("postgres://postgres@localhost:5432/crystal_todo", 
+# Clear::SQL.init("postgres://postgres@localhost:5432/crystal_todo",
 #     connection_pool_size: 5)
 
-#Clear Migration
+# Clear Migration
 Clear::Migration::Manager.instance.apply_all
 
 # Configure logging (backend defined in constants.cr)
@@ -35,7 +35,6 @@ else
 end
 Log.builder.bind "action-controller.*", log_level, App::LOG_BACKEND
 Log.builder.bind "#{App::NAME}.*", log_level, App::LOG_BACKEND
-
 
 # Filter out sensitive params that shouldn't be logged
 filter_params = ["password", "bearer_token"]
