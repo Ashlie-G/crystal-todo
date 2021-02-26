@@ -27,6 +27,7 @@ class TodosController < Application
       todo.save!
         # todo.url = "http://#{request.headers["host"]}/todos/#{todo.id}"
         todo.url = "http://localhost:3000/todos/#{todo.id}"
+        todo.save!
         render text: todo.to_json 
     rescue exception
       puts "There was an error: #{exception}"
