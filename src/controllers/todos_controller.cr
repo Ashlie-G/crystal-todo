@@ -25,14 +25,9 @@ class TodosController < Application
     todo = Todo.new(JSON.parse(request.body.as(IO)))
     begin
       todo.save!
-      if !todo.url.nil?
-        puts "Url empty"
-      else
-      # todo.url = "http://#{request.headers["host"]}/todos/#{todo.id}"
-      todo.url = "http://localhost:3000/todos/#{todo.id}"
-      render text: todo.to_json
-      end
-
+        # todo.url = "http://#{request.headers["host"]}/todos/#{todo.id}"
+        todo.url = "http://localhost:3000/todos/#{todo.id}"
+        render text: todo.to_json 
     rescue exception
       puts "There was an error: #{exception}"
     end
