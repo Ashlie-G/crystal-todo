@@ -1,5 +1,7 @@
 # require "clear"
 # require "action-controller"
+# require "active-model"
+
 
 
 # require "../src/db/migrate"
