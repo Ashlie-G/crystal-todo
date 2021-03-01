@@ -66,12 +66,7 @@ class TodosController < Application
     render text: todo.to_json
   end
 
-  # DELETE ALL /todos
-  # def destroy_all
-  #   todos = Todo.query.select.to_a
-  #   todos.delete
-  # end
-
+  #DELETE ALL
   delete "/" do
     Todo.query.select.each { |todo| todo.delete }
   end
