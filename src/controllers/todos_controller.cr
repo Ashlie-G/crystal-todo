@@ -3,9 +3,16 @@ require "action-controller"
 require "json"
 
 class TodosController < Application
-  # before_action :set_todo, only [:show, :update, :delete]
-
+  
   base "/todos"
+  
+  # before_action :set_todo, only [:show, :update, :delete]
+  
+  # private def set_todo
+  #   todo = Todo.query.find!({id: params["id"]})
+  #   # pp todo
+  # end
+
 
   getter todo : Todo { set_todo }
 
@@ -14,7 +21,7 @@ class TodosController < Application
     # ruby
     # @todos = Todo.all
     # render json: @todos
-    todos = Todo.query.select.to_a
+    todos = Todo.query.to_a
     render text: todos.to_json
   end
 
@@ -40,6 +47,7 @@ class TodosController < Application
   # PATCH/PUT /todos/:id
   def update
     todo
+    # pp todo
 
     update_params = JSON.parse(request.body.as(IO)).as_h
 
@@ -68,7 +76,7 @@ class TodosController < Application
 
   #DELETE ALL
   delete "/" do
-    Todo.query.select.each { |todo| todo.delete }
+    Todo.query.each { |todo| todo.delete }
   end
 
   # set up CORS
@@ -81,9 +89,10 @@ class TodosController < Application
   end
 
   private def set_todo
-    Todo.find!(params["id"])
+    # todo = Todo.query.find!({id: params["id"]})
+    todo = Todo.find!(params["id"])
+    pp todo
   end
-
   # private def todo_params
   #   params.require("todo").permit("name")
   # end
