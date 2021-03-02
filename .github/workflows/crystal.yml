@@ -1,10 +1,16 @@
-# name: Crystal CI
+name: Crystal CI
 
-# on:
-#   push:
-#     branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+script:
+  # Spec
+  - crystal spec --verbose
+  # Format
+  - crystal tool format --check
 
 # jobs:
 #   build:
