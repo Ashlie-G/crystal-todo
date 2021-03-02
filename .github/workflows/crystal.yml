@@ -1,22 +1,22 @@
-name: Crystal CI
+# name: Crystal CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
 
-jobs:
-  build:
+# jobs:
+#   build:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    container:
-      image: crystallang/crystal
+#     container:
+#       image: crystallang/crystal
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Install dependencies
+#       run: shards install
+#     - name: Run tests
+#       run: crystal spec
