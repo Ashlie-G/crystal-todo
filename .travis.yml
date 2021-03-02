@@ -1,6 +1,8 @@
 language: crystal
 
-on: push
+on:
+  push:
+    branches: [ main ]
 
 script:
   # Spec
