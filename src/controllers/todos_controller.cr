@@ -18,9 +18,6 @@ class TodosController < Application
 
   # GET /todos
   def index
-    # ruby
-    # @todos = Todo.all
-    # render json: @todos
     todos = Todo.query.to_a
     render text: todos.to_json
   end
@@ -93,8 +90,5 @@ class TodosController < Application
     todo = Todo.find!(params["id"])
     pp todo
   end
-  # private def todo_params
-  #   params.require("todo").permit("name")
-  # end
 
 end
