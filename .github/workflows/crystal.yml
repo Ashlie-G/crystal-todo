@@ -1,27 +1,14 @@
 name: Crystal CI
-
-on:
-  push:
-  pull_request:
-    branches: [main]
-jobs: 
-
-- name: Run tests
-  run: crystal spec
-
-
-# name: Crystal CI
-# on: [push]
-# jobs:
-#     run-tests:
-#       runs-on: macos-latest
-#       steps:
+on: [push]
+jobs:
+    run-tests:
+      runs-on: macos-latest
+      steps:
       # - uses: actions/checkout@v2
       # - name: Install dependencies
       #   run: shards install
-      # - name: Run tests
-      #   shell: bash
-      #   run: crystal spec
+      - name: Run tests
+        run: crystal spec
 
 # name: Crystal CI
 
