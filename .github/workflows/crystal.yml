@@ -2,7 +2,7 @@ name: Crystal CI
 on: [push]
 jobs:
     run-tests:
-      runs-on: macos-11.0
+      runs-on: macos-10.15
       steps:
       - uses: actions/checkout@v2
       # - name: Install dependencies
