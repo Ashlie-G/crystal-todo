@@ -4,9 +4,9 @@ jobs:
     run-tests:
       runs-on: macos-latest
       steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: shards install
+      # - uses: actions/checkout@v2
+      # - name: Install dependencies
+      #   run: shards install
       - name: Run tests
         run: crystal spec
 
