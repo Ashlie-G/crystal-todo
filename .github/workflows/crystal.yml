@@ -4,9 +4,10 @@ on:
   push:
   pull_request:
     branches: [main]
+jobs: 
 
 - name: Run tests
-        run: crystal spec
+  run: crystal spec
 
 
 # name: Crystal CI
