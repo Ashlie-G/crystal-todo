@@ -1,5 +1,7 @@
 language: crystal
 
+on: push
+
 script:
   # Spec
   - crystal spec --verbose
