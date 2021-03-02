@@ -8,6 +8,7 @@ jobs:
       # - name: Install dependencies
       #   run: shards install
       - name: Run tests
+        shell: bash
         run: crystal spec
 
 # name: Crystal CI
