@@ -1,32 +1,33 @@
-# name: Crystal CI
-
-# on:
-#   push:
-#   pull_request:
-#     branches: [main]
-
-# - name: Run tests
-#         run: crystal spec
-
 name: Crystal CI
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  
+  steps:
+  - name: Run tests
+    run: crystal spec
 
-jobs:
-  build:
+# name: Crystal CI
 
-    runs-on: macos-latest
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
 
-    # container:
-    #   image: crystallang/crystal
+# jobs:
+#   build:
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec
+#     runs-on: macos-latest
+
+#     container:
+#       image: crystallang/crystal
+
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Install dependencies
+#       run: shards install
+#     - name: Run tests
+#       run: crystal spec
