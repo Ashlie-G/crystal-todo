@@ -18,7 +18,7 @@ require "action-controller/server"
 #Docker?
 # Clear::SQL.init("POSTGRES_USER://POSTGRES_PASSWORD@localhost:5432/POSTGRES_DB")
 
-Clear::SQL.init("postgres://postgres@localhost:5432/crystal_todo")
+Clear::SQL.init("postgres://postgres@localhost:5430/crystal_todo")
 # PG.connect_listen("postgres://localhost:5432/", "a", "b") do |n|
 #   puts "    got: #{n.payload} on #{n.channel}"
 # end
