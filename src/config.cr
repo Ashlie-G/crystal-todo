@@ -15,8 +15,6 @@ require "./db/migrate/*"
 require "action-controller/server"
 
 # initialize a pool of database connection:
-#Docker?
-# Clear::SQL.init("POSTGRES_USER://POSTGRES_PASSWORD@localhost:5432/POSTGRES_DB")
 
 Clear::SQL.init("postgres://postgres@localhost:5430/crystal_todo")
 
