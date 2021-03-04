@@ -1,6 +1,6 @@
 require "spec"
 # require "../src/controllers/*"
-# require "../src/models/todo.cr"
+require "../src/models/todo.cr"
 
 # Your application config
 # If you have a testing environment, replace this with a test config file

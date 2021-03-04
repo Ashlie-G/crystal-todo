@@ -1,3 +1,7 @@
 FROM crystallang/crystal:0.36.0-alpine
 ADD . /src
 WORKDIR /src
+
+# Run the app binding on port 8080
+EXPOSE 8080
+ENTRYPOINT ["crystal", "spec"]
