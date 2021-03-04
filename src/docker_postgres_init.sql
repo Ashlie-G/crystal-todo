@@ -1,7 +1,7 @@
 CREATE USER test WITH PASSWORD 'test' CREATEDB;
-CREATE DATABASE test
+CREATE DATABASE crystal_todo_test
     WITH
-    OWNER = test
+    OWNER = postgres
     ENCODING = 'UTF8'
     LC_COLLATE = 'en_US.utf8'
     LC_CTYPE = 'en_US.utf8'
