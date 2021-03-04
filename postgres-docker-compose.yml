@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     ports: 
-      - 5432:5432
+      - 5430:5430
     environment: 
       - POSTGRES_DB=crystal_todo
       - POSTGRES_USER=postgres
