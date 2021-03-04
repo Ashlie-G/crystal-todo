@@ -2,15 +2,16 @@ version: '3.7'
 services:
   db:
     image: postgres
-    ports: 
-      - 5430:5430
     environment: 
       - POSTGRES_DB=crystal_todo
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
       - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
-      
+      - ./data:/var/lib/postgresql/data
+    ports: 
+      - 5430:5430
+            
   web:
     image: crystallang/crystal
     restart: always
