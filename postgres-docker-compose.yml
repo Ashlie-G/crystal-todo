@@ -11,5 +11,15 @@ services:
     volumes:
       - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
       
-web:
-  image: crystallang/crystal
+  web:
+    image: crystallang/crystal
+    restart: always
+    environment:
+      POSTGRES_URI: postgres://postgres@localhost/postgres
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 4000:8080

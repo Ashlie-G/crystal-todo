@@ -19,11 +19,9 @@ require "action-controller/server"
 # Clear::SQL.init("POSTGRES_USER://POSTGRES_PASSWORD@localhost:5432/POSTGRES_DB")
 
 Clear::SQL.init("postgres://postgres@localhost:5430/crystal_todo")
-# PG.connect_listen("postgres://localhost:5432/", "a", "b") do |n|
-#   puts "    got: #{n.payload} on #{n.channel}"
-# end
-# Clear::SQL.init("postgres://postgres@localhost:5432/crystal_todo",
-#     connection_pool_size: 5)
+
+#this should be final version
+# Clear::SQL.init(App::PG_DATABASE_URL, connection_pool_size: 5)
 
 # Clear Migration
 Clear::Migration::Manager.instance.apply_all
