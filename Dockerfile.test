@@ -1,0 +1,3 @@
+FROM crystallang/crystal:0.36.0-alpine
+ADD . /src
+WORKDIR /src
