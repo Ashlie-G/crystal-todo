@@ -18,8 +18,9 @@ module App
 
   COOKIE_SESSION_KEY    = ENV["COOKIE_SESSION_KEY"]? || "_spider_gazelle_"
   COOKIE_SESSION_SECRET = ENV["COOKIE_SESSION_SECRET"]? || "4f74c0b358d5bab4000dd3c75465dc2c"
-
-  PG_DATABASE_URL = ENV["PG_DATABASE_URL"]? || "postgres://postgres@localhost/postgres"
+  
+  #postgres databzse
+  # PG_DATABASE_URL = ENV["PG_DATABASE_URL"]? || "postgres://postgres:postgres@localhost:5432/crystal_todo"
 
   def self.running_in_production?
     ENVIRONMENT == "production"
