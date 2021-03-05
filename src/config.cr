@@ -16,7 +16,7 @@ require "action-controller/server"
 
 # initialize a pool of database connection:
 
-Clear::SQL.init("postgres://postgres:postgres@localhost/crystal_todo")
+Clear::SQL.init("postgres://postgres:postgres@localhost:5432/crystal_todo")
 
 #this should be final version
 # Clear::SQL.init(App::PG_DATABASE_URL, connection_pool_size: 5)
