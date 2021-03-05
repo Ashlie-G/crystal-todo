@@ -6,17 +6,18 @@ services:
       - POSTGRES_DB=crystal_todo
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    volumes:
-      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    # volumes:
+    #   - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    #   - ./data:/var/lib/postgresql/data
 
     ports: 
-      - 5432:5432
+      - "5432:5432"
             
   web:
     image: crystallang/crystal
     restart: always
     environment:
-      POSTGRES_URI: postgres://postgres@localhost/postgres
+      POSTGRES_URI: postgres://postgres:postgres@localhost/postgres
     build:
       context: ./
       dockerfile: Dockerfile
