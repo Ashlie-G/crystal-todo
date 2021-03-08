@@ -20,7 +20,7 @@ module App
   COOKIE_SESSION_SECRET = ENV["COOKIE_SESSION_SECRET"]? || "4f74c0b358d5bab4000dd3c75465dc2c"
   
   #postgres databzse
-  PG_DATABASE_URL = "postgres://postgres:postgres@localhost:5432/crystal_todo_test"
+  POSTGRES_URI = "postgres://postgres:postgres@localhost:5000/crystal_todo"
 
   def self.running_in_production?
     ENVIRONMENT == "production"
