@@ -16,10 +16,10 @@ require "action-controller/server"
 
 # initialize a pool of database connection:
 
-Clear::SQL.init("postgres://postgres:postgres@localhost:5000/crystal_todo")
+# Clear::SQL.init("postgres://postgres:postgres@localhost:5000/crystal_todo")
 
 #this should be final version
-# Clear::SQL.init(App::POSTGRES_URI, connection_pool_size: 5)
+Clear::SQL.init(App::POSTGRES_URI, connection_pool_size: 5)
 
 # Clear Migration
 Clear::Migration::Manager.instance.apply_all
