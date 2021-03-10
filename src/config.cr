@@ -14,11 +14,7 @@ require "./db/migrate/*"
 # Server required after application controllers
 require "action-controller/server"
 
-# initialize a pool of database connection:
-
-# Clear::SQL.init("postgres://postgres:postgres@localhost:5432/crystal_todo", connection_pool_size: 5)
-
-#this should be final version
+# initialize with Clear database connection:
 Clear::SQL.init(App::POSTGRES_URI)
 
 # Clear Migration

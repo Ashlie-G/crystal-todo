@@ -10,7 +10,6 @@ services:
     volumes:
       - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
       - ./data:/Users/user/Documents/postgresql/data
-      # - ./data:/var/lib/postgresql/data
     ports: 
       - '5000:5432'    
   web:
