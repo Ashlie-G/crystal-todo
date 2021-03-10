@@ -1,12 +1,12 @@
-version: '3.7'
+version: '3.8'
 
 services:
   db:
-    image: postgres
+    image: postgres #arm64v8/postgres
     environment: 
-      - POSTGRES_DB=crystal_todo
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_DB: crystal_todo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
       - ./data:/Users/user/Documents/postgresql/data
@@ -17,7 +17,7 @@ services:
     image: crystallang/crystal
     restart: always
     environment:
-      POSTGRES_URI: postgres://postgres:postgres@localhost:5432/crystal_todo
+      POSTGRES_URI: postgres://postgres:postgres@db:5432/crystal_todo
     build:
       context: ./
       dockerfile: Dockerfile

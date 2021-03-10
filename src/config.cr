@@ -19,7 +19,7 @@ require "action-controller/server"
 # Clear::SQL.init("postgres://postgres:postgres@localhost:5432/crystal_todo", connection_pool_size: 5)
 
 #this should be final version
-Clear::SQL.init(App::POSTGRES_URL)
+Clear::SQL.init(App::POSTGRES_URI)
 
 # Clear Migration
 Clear::Migration::Manager.instance.apply_all
