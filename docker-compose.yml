@@ -24,3 +24,4 @@ services:
       - db
     ports:
       - 4000:8080
+    env_file: .env
