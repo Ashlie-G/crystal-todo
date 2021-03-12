@@ -56,5 +56,5 @@ USER appuser:appuser
 # Run the app binding on port 8080
 EXPOSE 8080
 ENTRYPOINT ["/app"]
-HEALTHCHECK CMD ["/app", "-c", "http://127.0.0.1:4000/"]
-CMD ["/app", "-b", "0.0.0.0", "-p", "4000"]
+HEALTHCHECK CMD ["/app", "-c", "http://127.0.0.1:8080/"]
+CMD ["/app", "-b", "0.0.0.0", "-p", "8080"]
